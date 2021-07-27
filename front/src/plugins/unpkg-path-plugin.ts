@@ -1,31 +1,52 @@
-import * as esbuild from 'esbuild-wasm';
- 
+import * as esbuild from "esbuild-wasm";
+import axios from "axios";
+
 export const unpkgPathPlugin = () => {
   return {
-    name: 'unpkg-path-plugin',
+    name: "unpkg-path-plugin",
     setup(build: esbuild.PluginBuild) {
+      // onResolve: Find path where the module is stored
       build.onResolve({ filter: /.*/ }, async (args: any) => {
-        console.log('onResole', args);
-        return { path: args.path, namespace: 'a' };
-      });
- 
-      build.onLoad({ filter: /.*/ }, async (args: any) => {
-        console.log('onLoad', args);
- 
-        if (args.path === 'index.js') {
+        console.log("onResolve", args);
+        if (args.path === "index.js") {
+          return { path: args.path, namespace: "a" };
+        }
+
+        if (args.path.includes('./') || args.path.includes('../')) {
           return {
-            loader: 'jsx',
+            namespace: 'a',
+            path: new URL(args.path, "https://unpkg.com" + args.resolveDir + "/").href,
+          }
+        }
+
+        return {
+          namespace: "a",
+          path: `https://unpkg.com/${args.path}`,
+        };
+      });
+
+      // onLoad: Attempts to load a file
+      build.onLoad({ filter: /.*/ }, async (args: any) => {
+        console.log("onLoad", args);
+
+        if (args.path === "index.js") {
+          return {
+            loader: "jsx",
             contents: `
-              import message from './message';
-              console.log(message);
+              import React, { useState } from "react@16.0.0";
+              console.log(React, useState);
             `,
           };
-        } else {
-          return {
-            loader: 'jsx',
-            contents: 'export default "hi there!"',
-          };
         }
+
+        const { data, request } = await axios.get(args.path);
+        // console.log(request);
+        return {
+          loader: "jsx",
+          contents: data,
+          // where we found the nested package
+          resolveDir: new URL("./", request.responseURL).pathname,
+        };
       });
     },
   };
