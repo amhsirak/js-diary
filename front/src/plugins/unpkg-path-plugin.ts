@@ -1,5 +1,5 @@
 import * as esbuild from "esbuild-wasm";
-import axios from 'axios';
+import axios from "axios";
 
 export const unpkgPathPlugin = () => {
   return {
@@ -10,12 +10,19 @@ export const unpkgPathPlugin = () => {
         console.log("onResolve", args);
         if (args.path === "index.js") {
           return { path: args.path, namespace: "a" };
-        } else if (args.path === "tiny-test-pkg") {
-          return {
-            path: "https://unpkg.com/tiny-test-pkg@1.0.0/index.js",
-            namespace: "a",
-          };
         }
+
+        if (args.path.includes('./') || args.path.includes('../')) {
+          return {
+            namespace: 'a',
+            path: new URL(args.path, args.importer + '/').href,
+          }
+        }
+
+        return {
+          namespace: "a",
+          path: `https://unpkg.com/${args.path}`,
+        };
       });
 
       // onLoad: Attempts to load a file
@@ -33,7 +40,7 @@ export const unpkgPathPlugin = () => {
 
         const { data } = await axios.get(args.path);
         return {
-          loader: 'jsx',
+          loader: "jsx",
           contents: data,
         };
       });
