@@ -1,5 +1,10 @@
 import * as esbuild from "esbuild-wasm";
 import axios from "axios";
+import localForage from "localforage";
+
+const fileCache = localForage.createInstance({
+  name: "crescentcache",
+});
 
 export const unpkgPathPlugin = () => {
   return {
@@ -39,14 +44,23 @@ export const unpkgPathPlugin = () => {
           };
         }
 
+        // check if file is already fetched and is in the cache
+        const cacheResult = await fileCache.getItem(args.path);
+        if (cacheResult) {
+          return cacheResult;
+        }
+
         const { data, request } = await axios.get(args.path);
-        // console.log(request);
-        return {
+       
+        const result = {
           loader: "jsx",
           contents: data,
           // where we found the nested package
           resolveDir: new URL("./", request.responseURL).pathname,
         };
+        // store respone in cache
+        await fileCache.setItem(args.path, result);
+        return result;
       });
     },
   };
