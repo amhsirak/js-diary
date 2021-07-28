@@ -44,21 +44,21 @@ export const unpkgPathPlugin = () => {
           };
         }
 
-        // check if file is already fetched and is in the cache
-        const cacheResult = await fileCache.getItem(args.path);
+        
+        const cacheResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path);
         if (cacheResult) {
           return cacheResult;
         }
 
         const { data, request } = await axios.get(args.path);
        
-        const result = {
+        const result: esbuild.OnLoadResult = {
           loader: "jsx",
           contents: data,
           // where we found the nested package
           resolveDir: new URL("./", request.responseURL).pathname,
         };
-        // store respone in cache
+        
         await fileCache.setItem(args.path, result);
         return result;
       });
