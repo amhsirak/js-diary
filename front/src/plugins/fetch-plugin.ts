@@ -19,13 +19,16 @@ export const fetchPlugin = (inputCode: string) => {
         };
       }); 
 
-      // Regex: find css file
-      build.onLoad({ filter: /.css$/}, async (args: any) => {
-          const cacheResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path);
+    build.onLoad({ filter: /.*/ }, async (args: any) => {
+      const cacheResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path);
           if (cacheResult) {
            return cacheResult;
          }
+    })
 
+      // Regex: find css file
+      build.onLoad({ filter: /.css$/}, async (args: any) => {
+       
         const { data, request } = await axios.get(args.path);
 
         const escaped = data
@@ -52,13 +55,7 @@ export const fetchPlugin = (inputCode: string) => {
 
       build.onLoad({ filter: /.*/ }, async (args: any) => {
        
-        const cacheResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path);
-        if (cacheResult) {
-          return cacheResult;
-        }
-
         const { data, request } = await axios.get(args.path);
-
         //console.log(args.path);
         
         const result: esbuild.OnLoadResult = {
