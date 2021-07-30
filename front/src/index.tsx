@@ -43,6 +43,12 @@ const App = () => {
         setCode(result.outputFiles[0].text);
     };
 
+    const html = `
+    <script> 
+    ${code}
+    </script>
+    `
+
     return <div>
         <textarea 
         value = {input}
@@ -52,9 +58,10 @@ const App = () => {
             <button onClick={onClick}>Submit</button>
         </div>
         <pre>{code}</pre>
-        <iframe sandbox="" src="/test.html"/>
+        <iframe srcDoc={html} sandbox="allow-scripts" />
     </div>
 };
+
 
 ReactDOM.render(
     <App />,
