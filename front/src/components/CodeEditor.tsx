@@ -31,7 +31,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
             useTabs: false,
             semi: true,
             singleQuote: true
-        });
+        }).replace(/\n$/, ""); // regex: finds a new line character at the end of a string
         // set the formatted value back to the editor
         editorRef.current.setValue(formatted);
     }
@@ -57,7 +57,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
         scrollBeyondLastLine: false,
         automaticLayout: true
     }}
-    />;
+    />
     </div>
     )
 }
