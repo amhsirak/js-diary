@@ -1,8 +1,11 @@
+import "./CodeEditor.css";
+// import "./syntax.css";
 import { useRef } from "react";
 import MonacoEditor, { EditorDidMount } from "@monaco-editor/react";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
-
+import codeShift from "jscodeshift";
+import Highlighter from "monaco-jsx-highlighter";
 
 interface CodeEditorProps {
     initialValue: string;
@@ -17,7 +20,21 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
        monacoEditor.onDidChangeModelContent(() => {
            onChange(getValue());
        });
-       monacoEditor.getModel()?.updateOptions({ tabSize: 2 })
+       monacoEditor.getModel()?.updateOptions({ tabSize: 2 });
+
+       const highlighter = new Highlighter(
+        // @ts-ignore
+        window.monaco,
+        codeShift,
+        monacoEditor
+       );
+       highlighter.highLightOnDidChangeModelContent(
+           // ignore console errors
+           () => {},
+           () => {},
+           undefined,
+           () => {}
+       );
     };
 
     const onFormat = () => {
@@ -30,19 +47,21 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
             useTabs: false,
             semi: true,
             singleQuote: true
-        });
+        }).replace(/\n$/, ""); // regex: finds a new line character at the end of a string
         // set the formatted value back to the editor
         editorRef.current.setValue(formatted);
     }
 
     return(
-    <div>
-        <button onClick={onFormat}>Format</button>
+    <div className="editor">
+        <button 
+        className="button button-format is-primary is-outlined is-small" 
+        onClick={onFormat}>Format</button>
     <MonacoEditor
     editorDidMount={onEditorDidMount}
     value={initialValue}
     language="javascript"
-    height="500px"
+    height="400px"
     theme="dark" 
     options={{
         wordWrap: "on",
@@ -54,7 +73,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
         scrollBeyondLastLine: false,
         automaticLayout: true
     }}
-    />;
+    />
     </div>
     )
 }
