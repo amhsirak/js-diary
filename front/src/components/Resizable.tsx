@@ -1,4 +1,4 @@
-import "./Resizable.css";
+import "../styles/Resizable.css";
 import { ResizableBox, ResizableBoxProps } from "react-resizable";
 
 interface ResizableProps {
@@ -10,6 +10,7 @@ const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
     let resizableProps: ResizableBoxProps;
     if (direction === "horizontal") {
         resizableProps = {
+            className: "resize-horizontal",
             height: Infinity, 
             width: window.innerWidth * 0.8,
             resizeHandles: ["e"],

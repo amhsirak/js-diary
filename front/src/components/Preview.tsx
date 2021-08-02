@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import "./Preview.css";
+import "../styles/Preview.css";
 
 interface PreviewProps {
   code: string;
@@ -8,6 +8,7 @@ interface PreviewProps {
 const html = `
 <html>
     <head></head>
+      <style> html {  background-color: #ffffff; } </style>
     <body>
         <div id="root"></div>
         <script>
