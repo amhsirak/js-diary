@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import "bulmaswatch/nuclear/bulmaswatch.min.css";
+import "bulmaswatch/cyborg/bulmaswatch.min.css";
 import CodeCell from './components/CodeCell';
 
 const App = () => {
