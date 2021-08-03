@@ -1,6 +1,6 @@
 import "../styles/Resizable.css";
 import { ResizableBox, ResizableBoxProps } from "react-resizable";
-import { useEffect } from "react";
+import { useState,useEffect } from "react";
 
 interface ResizableProps {
     direction: "horizontal" | "vertical";
@@ -9,10 +9,20 @@ interface ResizableProps {
 const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
 
     let resizableProps: ResizableBoxProps;
+    const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+    const [innerHeight, setInnerHeight] = useState(window.innerHeight);
 
     useEffect(() => {
+        let timer: any;
         const listener = () => {
-            console.log(window.innerWidth,window.innerHeight);
+            // debouncing
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(() => {
+                setInnerWidth(window.innerWidth);
+                setInnerHeight(window.innerHeight);
+            }, 100);
         }
         window.addEventListener("resize", listener);
         return () => {
@@ -24,18 +34,18 @@ const Resizable: React.FC<ResizableProps> = ({ direction, children }) => {
         resizableProps = {
             className: "resize-horizontal",
             height: Infinity, 
-            width: window.innerWidth * 0.8,
+            width: innerWidth * 0.8,
             resizeHandles: ["e"],
-            minConstraints: [window.innerWidth * 0.1, Infinity],
-            maxConstraints: [window.innerWidth * 0.8, Infinity],
+            minConstraints: [innerWidth * 0.1, Infinity],
+            maxConstraints: [innerWidth * 0.8, Infinity],
         };
     } else {
         resizableProps = {
             height: 300, 
             width: Infinity,
             resizeHandles: ["s"],
-            minConstraints: [Infinity, window.innerWidth * 0.1],
-            maxConstraints: [Infinity, window.innerHeight * 0.8],
+            minConstraints: [Infinity, innerWidth * 0.1],
+            maxConstraints: [Infinity, innerHeight * 0.8],
         };
     }
 
