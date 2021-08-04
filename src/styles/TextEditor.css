@@ -1,0 +1,24 @@
+.w-md-editor .title {
+    line-height: unset;
+    font-size: unset;
+    font-weight: unset;
+}
+
+.w-md-editor ul {
+    line-height: 1.0;
+}
+
+.text-editor .w-md-editor-bar svg {
+    display: none;
+}
+
+.text-editor .w-md-editor-bar {
+    height: 11px;
+    cursor: row-resize;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=");
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-color: #131516;
+    width: 100%;
+    position: relative;
+}
