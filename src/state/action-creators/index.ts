@@ -1,4 +1,4 @@
-import { CellTypes, CellDirections } from "../cell";
+import { CellTypes } from "../cell";
 import { ActionType } from "../action-types";
 import {
   Action,
@@ -6,6 +6,7 @@ import {
   DeleteCellAction,
   InsertCellBeforeAction,
   UpdateCellAction,
+  CellDirections
 } from "../actions";
 
 export const moveCell = (id: string, cellDirection: CellDirections): MoveCellAction => {

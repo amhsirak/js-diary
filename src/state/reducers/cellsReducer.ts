@@ -27,6 +27,10 @@ const cellsReducer = (state: CellsState = initialState, action: Action): CellsSt
             return state;
         case DELETE_CELL:
             return state;
+        case INSERT_CELL_BEFORE:
+            return state;
+        case UPDATE_CELL:
+            return state;
         default:
             return state;
     }
