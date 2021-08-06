@@ -19,18 +19,29 @@ const initialState: CellsState = {
 }
 
 const cellsReducer = (state: CellsState = initialState, action: Action): CellsState => {
-    const { type, payload} = action
     const { MOVE_CELL, DELETE_CELL, INSERT_CELL_BEFORE, UPDATE_CELL } = ActionType
 
-    switch(type) {
+    switch(action.type) {
         case MOVE_CELL:
             return state;
         case DELETE_CELL:
             return state;
         case INSERT_CELL_BEFORE:
             return state;
+
         case UPDATE_CELL:
-            return state;
+            const { id, content} = action.payload
+            return {
+                ...state,
+                data: {
+                    ...state.data, 
+                    [id]: {
+                        ...state.data[id],
+                        content: content
+                    } 
+                }
+            }
+            
         default:
             return state;
     }
