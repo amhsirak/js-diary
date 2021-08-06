@@ -47,11 +47,7 @@
 }
  
 .text-editor .w-md-editor-toolbar li button {
-  color: #d4d4d4;
-}
- 
-.text-editor .w-md-editor-toolbar li button :hover {
-  color: #131516;
+  color: #535151;
 }
 
 .text-editor .w-md-editor-content {

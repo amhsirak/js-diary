@@ -1,6 +1,8 @@
+import produce from "immer";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
 import { Cell } from "../cell";
+import { store } from "../store";
 
 interface CellsState {
     loading: boolean;
@@ -18,33 +20,28 @@ const initialState: CellsState = {
     data: {}
 }
 
-const cellsReducer = (state: CellsState = initialState, action: Action): CellsState => {
-    const { MOVE_CELL, DELETE_CELL, INSERT_CELL_BEFORE, UPDATE_CELL } = ActionType
-
+const cellsReducer = produce((state: CellsState = initialState, action: Action) => {
+   
     switch(action.type) {
-        case MOVE_CELL:
-            return state;
-        case DELETE_CELL:
-            return state;
-        case INSERT_CELL_BEFORE:
+        case ActionType.MOVE_CELL:
             return state;
 
-        case UPDATE_CELL:
+        case ActionType.DELETE_CELL:
+            delete state.data[action.payload]
+            state.order = state.order.filter(id => id!== action.payload); 
+            return;
+
+        case ActionType.INSERT_CELL_BEFORE:
+            return state;
+
+        case ActionType.UPDATE_CELL:
             const { id, content} = action.payload
-            return {
-                ...state,
-                data: {
-                    ...state.data, 
-                    [id]: {
-                        ...state.data[id],
-                        content: content
-                    } 
-                }
-            }
-            
+            state.data[id].content = content;
+            return;
+
         default:
             return state;
     }
-}
+});
 
 export default cellsReducer;
