@@ -55,7 +55,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
     return(
     <div className="editor">
         <button 
-        className="button button-format is-danger is-outlined is-small" 
+        className="button button-format is-warning is-outlined is-small" 
         onClick={onFormat}>Format</button>
     <MonacoEditor
     editorDidMount={onEditorDidMount}
