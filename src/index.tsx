@@ -3,13 +3,13 @@ import "bulmaswatch/cyborg/bulmaswatch.min.css";
 import "./styles/index.css";
 import { Provider } from "react-redux";
 import { store } from "./state";
-import TextEditor from "./components/TextEditor";
+import CellList from "./components/CellList";
 
 const App = () => {
   return (
     <Provider store={store}>
     <div>
-      <TextEditor />
+      <CellList />
     </div>
     </Provider>
   );
