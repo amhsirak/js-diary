@@ -4,16 +4,22 @@ import CodeEditor from "./CodeEditor";
 import Preview from "./Preview";
 import bundle from "../bundler/index";
 import Resizable from "./Resizable";
+import { Cell } from "../state";
+import { useActions } from "../hooks/use-actions";
 
-const CodeCell = () => {
+interface CodeCellProps {
+  cell: Cell
+}
+
+const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
   const [code, setCode] = useState("");
-  const [input, setInput] = useState("");
   const [err, setErr] = useState("");
+  const { updateCell } = useActions();
 
   useEffect(() => {
-    const timer = setTimeout( async() => {
+    const timer = setTimeout(async() => {
        // Code transpiling and bundling
-      const output = await bundle(input);
+      const output = await bundle(cell.content);
       setCode(output.code);
       setErr(output.err);
     },1000);
@@ -22,15 +28,15 @@ const CodeCell = () => {
       clearTimeout(timer);
     }
 
-  },[input]);
+  },[cell.content]);
 
   return (
     <Resizable direction="vertical">
       <div className="resizable-horizontal">
         <Resizable direction="horizontal">
           <CodeEditor
-            initialValue="// Start writing code here!"
-            onChange={(value) => setInput(value)}
+            initialValue= {cell.content}
+            onChange={(value) => updateCell(cell.id, value)}
           />
         </Resizable>
         <Preview code={code} err={err} />
