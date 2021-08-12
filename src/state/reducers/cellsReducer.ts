@@ -44,7 +44,7 @@ const cellsReducer = produce(
             state.order = state.order.filter(id => id!== action.payload); 
             return state;
 
-        case ActionType.INSERT_CELL_BEFORE:
+        case ActionType.INSERT_CELL_AFTER:
             const cell: Cell = {
                 content: '',
                 type: action.payload.type,
