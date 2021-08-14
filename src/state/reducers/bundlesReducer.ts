@@ -1,5 +1,4 @@
 import produce from "immer";
-import bundle from "../../bundler";
 import { ActionType } from "../action-types";
 import { Action } from "../actions";
 
@@ -8,7 +7,7 @@ interface BundlesState {
         loading: boolean; // currently bundling code or not
         code: string;
         err: string;
-    }
+    } | undefined;
 }
 
 const initialState: BundlesState = {};
