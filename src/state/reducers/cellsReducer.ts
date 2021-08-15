@@ -23,7 +23,7 @@ const cellsReducer = produce(
     (
         state: CellsState = initialState, 
         action: Action
-    ) => {
+    ): CellsState => {
    
     switch(action.type) {
         case ActionType.MOVE_CELL:

@@ -1,34 +1,37 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "../styles/CodeCell.css";
 import CodeEditor from "./CodeEditor";
-import Preview from "./Preview";
-import bundle from "../bundler/index";
 import Resizable from "./Resizable";
+import Preview from "./Preview";
 import { Cell } from "../state";
 import { useActions } from "../hooks/use-actions";
+import { useTypedSelector } from "../hooks/use-typed-selector";
 
 interface CodeCellProps {
   cell: Cell
 }
 
 const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
-  const [code, setCode] = useState("");
-  const [err, setErr] = useState("");
-  const { updateCell } = useActions();
+
+  const { updateCell, createBundle } = useActions();
+  const bundle = useTypedSelector((state) => state.bundles[cell.id])
+  // console.log(bundle);
 
   useEffect(() => {
+    if (!bundle) {
+      createBundle(cell.id, cell.content);
+      return;
+    }
     const timer = setTimeout(async() => {
        // Code transpiling and bundling
-      const output = await bundle(cell.content);
-      setCode(output.code);
-      setErr(output.err);
-    },1000);
+       createBundle(cell.id, cell.content);
+    },800);
 
     return () => {
       clearTimeout(timer);
     }
-
-  },[cell.content]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[cell.content, cell.id, createBundle]);
 
   return (
     <Resizable direction="vertical">
@@ -39,7 +42,18 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
             onChange={(value) => updateCell(cell.id, value)}
           />
         </Resizable>
-        <Preview code={code} err={err} />
+        <div className="progress-wrapper">
+        {
+          !bundle || bundle.loading ? (
+           <div className="progress-cover">
+            <progress className="progress is-small is-primary" max="100">
+              Loading
+            </progress>
+          </div>
+          ) : ( 
+            <Preview code={bundle.code} err={bundle.err} /> 
+            )}
+        </div>
       </div>
     </Resizable>
   );
@@ -47,4 +61,4 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
 
 export default CodeCell;
 
-// Debouncing? - When we allow some fxn / code to run as much as possible and only after some period of time elapses, we want to perform some other action.
+// Debouncing? - We allow some fxn / code to run as much as possible and only after some period of time elapses, we want to perform some other action.
