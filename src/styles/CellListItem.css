@@ -7,3 +7,11 @@
     width: 100%;
     background-color: #131516;
 }
+
+.cell-list {
+    margin: 1rem;
+}
+
+.react-draggable-transparent-selection .cell-list {
+    margin-bottom: 100vh;
+}

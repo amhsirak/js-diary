@@ -14,7 +14,7 @@
 
 .react-resizable-handle-e {
   width: 20px;
-  min-width: 20px;
+  min-width: 10px;
   height: 100%;
   cursor: col-resize;
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==");
