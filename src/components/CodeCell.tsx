@@ -27,8 +27,9 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
         if (typeof value === "object") {
           if (value.$$typeof && value.props) {
             _ReactDOM.render(value, root);
-          }
+          } else {
           root.innerHTML = JSON.stringify(value);
+          } 
         } else {
          root.innerHTML = value;
         }
