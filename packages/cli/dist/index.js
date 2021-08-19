@@ -1,7 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var local_api_1 = __importDefault(require("local-api"));
-local_api_1.default();
+var commander_1 = require("commander");
+var open_1 = require("./commands/open");
+commander_1.program.addCommand(open_1.openCommand);
+commander_1.program.parse(process.argv);
