@@ -1,6 +1,6 @@
 import { program } from "commander";
-import { openCommand } from "./commands/open";
+import { serveCommand } from "./commands/serve";
 
-program.addCommand(openCommand);
+program.addCommand(serveCommand);
 
 program.parse(process.argv);
