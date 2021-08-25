@@ -7,5 +7,6 @@ export enum ActionType {
   BUNDLE_COMPLETE = 'bundle_complete',
   FETCH_CELLS = 'fetch_cells',
   FETCH_CELLS_COMPLETE = 'fetch_cells_complete',
-  FETCH_CELLS_ERROR = 'fetch_cell_error'
+  FETCH_CELLS_ERROR = 'fetch_cell_error',
+  SAVE_CELLS_ERROR = 'save_cell_error'
 }
