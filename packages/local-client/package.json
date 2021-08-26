@@ -1,7 +1,6 @@
 {
   "name": "@js-diary/local-client",
   "version": "1.0.0",
-  "private": true,
   "files": [
     "build"
   ],
