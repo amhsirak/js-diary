@@ -6,7 +6,7 @@
     "dist"
   ],
   "publishConfig": {
-    "access":"public"
+    "access": "public"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -23,9 +23,9 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "@js-diary/local-client": "^1.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "http-proxy-middleware": "^2.0.1",
-    "@js-diary/local-client": "^1.0.0"
+    "http-proxy-middleware": "^2.0.1"
   }
 }
