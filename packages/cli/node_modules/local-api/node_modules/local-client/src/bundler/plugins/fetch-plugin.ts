@@ -3,13 +3,14 @@ import axios from 'axios';
 import localForage from 'localforage';
 
 const fileCache = localForage.createInstance({
-  name: 'filecache',
+  name: 'jslogcache',
 });
 
 export const fetchPlugin = (inputCode: string) => {
   return {
     name: 'fetch-plugin',
     setup(build: esbuild.PluginBuild) {
+       // Regex : if(args.path === index.js) 
       build.onLoad({ filter: /(^index\.js$)/ }, () => {
         return {
           loader: 'jsx',
@@ -17,6 +18,7 @@ export const fetchPlugin = (inputCode: string) => {
         };
       });
 
+      // Regex: find css file
       build.onLoad({ filter: /.*/ }, async (args: any) => {
         const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(
           args.path
@@ -30,9 +32,9 @@ export const fetchPlugin = (inputCode: string) => {
       build.onLoad({ filter: /.css$/ }, async (args: any) => {
         const { data, request } = await axios.get(args.path);
         const escaped = data
-          .replace(/\n/g, '')
-          .replace(/"/g, '\\"')
-          .replace(/'/g, "\\'");
+          .replace(/\n/g, '') // replace new line chars by a single string
+          .replace(/"/g, '\\"') // escape double quotes
+          .replace(/'/g, "\\'"); // escape single quotes 
         const contents = `
           const style = document.createElement('style');
           style.innerText = '${escaped}';
@@ -55,6 +57,7 @@ export const fetchPlugin = (inputCode: string) => {
         const result: esbuild.OnLoadResult = {
           loader: 'jsx',
           contents: data,
+          // where we found the nested package
           resolveDir: new URL('./', request.responseURL).pathname,
         };
         await fileCache.setItem(args.path, result);
