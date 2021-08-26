@@ -11,6 +11,7 @@ export const saveCellMiddleware = ({
   dispatch: Dispatch<Action>;
   getState: () => RootState;
 }) => {
+  let timer: any;
   return (next: (action: Action) => void) => {
     return (action: Action) => {
       next(action);
@@ -23,8 +24,14 @@ export const saveCellMiddleware = ({
           ActionType.UPDATE_CELL,
         ].includes(action.type)
       ) {
-        // because saveCells() uses redux thunk
-        saveCells()(dispatch, getState);
+
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+          // because saveCells() uses redux thunk
+          saveCells()(dispatch, getState);
+        }, 300);
       }
     };
   };
