@@ -22,7 +22,7 @@ export const serve = (
      }));
   } else {
       // for local machine
-    const packagePath = require.resolve("local-client/build/index.html");
+    const packagePath = require.resolve("@js-diary/local-client/build/index.html");
     app.use(express.static(path.dirname(packagePath)));
   }
   

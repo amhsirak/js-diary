@@ -48,7 +48,7 @@ export const insertCellAfter = (
     type: ActionType.INSERT_CELL_AFTER,
     payload: {
       id,
-      type: cellType,
+      type: cellType
     },
   };
 };

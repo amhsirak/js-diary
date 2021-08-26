@@ -1,8 +1,14 @@
 {
-  "name": "local-client",
+  "name": "@js-diary/local-client",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "files": [
+    "build"
+  ],
+  "publishConfig": {
+    "access":"public"
+  },
+  "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@monaco-editor/react": "3.7.5",
     "@testing-library/jest-dom": "^5.11.8",
@@ -41,7 +47,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepublishOnly": "npm run build"
   },
   "eslintConfig": {
     "extends": [
