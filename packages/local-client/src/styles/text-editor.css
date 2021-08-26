@@ -17,7 +17,7 @@
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
   height: 11px;
   cursor: row-resize;
-  background-color: #37414b;
+  background-color: #2f3133;
   background-repeat: no-repeat;
   background-position: 50%;
   width: 100%;
@@ -42,7 +42,7 @@
 }
 
 .text-editor .w-md-editor-toolbar {
-  background-color: #37414b;
+  background-color: #16181a;
   border-bottom: 1px solid gray;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .text-editor .w-md-editor-content {
-  background-color: #202123;
+  background-color: #16181a;
 }
 
 .text-editor .w-md-editor,

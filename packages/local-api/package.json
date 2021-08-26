@@ -1,12 +1,18 @@
 {
-  "name": "local-api",
+  "name": "@js-diary/local-api",
   "version": "1.0.0",
   "description": "",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc --watch --preserveWatchOutput"
+    "start": "tsc --watch --preserveWatchOutput",
+    "prepublishOnly": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +23,9 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "@js-diary/local-client": "^1.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "http-proxy-middleware": "^2.0.1",
-    "local-client": "^0.1.0"
+    "http-proxy-middleware": "^2.0.1"
   }
 }

@@ -42,7 +42,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.serveCommand = void 0;
 var path_1 = __importDefault(require("path"));
 var commander_1 = require("commander");
-var local_api_1 = require("local-api");
+var local_api_1 = require("@js-diary/local-api");
 var isProduction = process.env.NODE_ENV === "production";
 exports.serveCommand = new commander_1.Command()
     .command("serve [filename]")
