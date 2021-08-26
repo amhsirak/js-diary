@@ -41,6 +41,7 @@ const html = `
 const Preview: React.FC<PreviewProps> = ({ code, err }) => {
   const iframe = useRef<any>();
 
+  // everytime new code is found, reset the html and write the new code
   useEffect(() => {
     iframe.current.srcdoc = html;
     setTimeout(() => {

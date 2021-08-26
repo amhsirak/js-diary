@@ -24,8 +24,9 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
     }
 
     const timer = setTimeout(async () => {
+      // Code transpiling and bundling
       createBundle(cell.id, cumulativeCode);
-    }, 750);
+    }, 800);
 
     return () => {
       clearTimeout(timer);
@@ -59,3 +60,5 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
 };
 
 export default CodeCell;
+
+// Debouncing? - We allow some fxn / code to run as much as possible and only after some period of time elapses, we want to perform some other action.

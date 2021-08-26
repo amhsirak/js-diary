@@ -10,7 +10,7 @@ const bundle = async (rawCode: string) => {
       wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm',
     });
   }
-
+  // Code transpiling and bundling
   try {
     const result = await service.build({
       entryPoints: ['index.js'],
