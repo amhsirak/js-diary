@@ -37,6 +37,10 @@ Useful for small code snippets and trying NPM packages
 * To add new cells, hover on the divider between each cell.
 * The code cells and text cells are resizable.
 
+## Example 
+[![2021-08-27.png](https://i.postimg.cc/PJ3CZmqT/2021-08-27.png)](https://postimg.cc/ZvNYzv3M)
+
+
 ***All of your changes get saved to a file you opened [js-diary](https://www.npmjs.com/package/js-diary) with. If you run `npx js-diary serve notebook.js` then all your code and text will be saved to a file named notebook.js***
 
 By default, the name of the file is notes.js
