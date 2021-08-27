@@ -1,7 +1,7 @@
 {
   "name": "js-diary",
   "version": "2.0.1",
-  "description": "",
+  "description": "In browser interactive coding environment for JavaScript developers. Write JS code, execute it and write documentation using markdown!",
   "files": [
     "dist"
   ],
@@ -13,9 +13,22 @@
     "start": "tsc --watch --preserveWatchOutput",
     "prepublishOnly": "esbuild src/index.ts --platform=node --outfile=dist/index.js --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karishmashuklaa/js-diary.git"
+  },
+  "keywords": [
+    "liveCoding",
+    "markdown",
+    "esbuild",
+    "codeEditor",
+    "browserBundling"
+  ],
+  "author": "Karishma Shukla (https://github.com/karishmashuklaa)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karishmashuklaa/js-diary/issues"
+  },
   "dependencies": {
     "@js-diary/local-client": "^2.0.1"
   },
