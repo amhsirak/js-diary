@@ -47,6 +47,8 @@ Useful for small code snippets and trying NPM packages
 By default, the name of the file is notes.js
 
 Currently the file gets saved in JSON format ( Working on saving it in JS Format in future release ) 
+
+## Issues
 Raise an [Issue](https://github.com/karishmashuklaa/js-diary/issues) if you find any bugs/got ideas. 
 
 
