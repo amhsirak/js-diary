@@ -3,6 +3,7 @@
 
 [![npm Package](https://img.shields.io/npm/v/js-diary.svg)](https://www.npmjs.org/package/js-diary) 
 [![downloads](https://img.shields.io/npm/dt/js-diary.svg)](http://npm-stat.com/charts.html?package=js-diary)
+[![License](https://img.shields.io/npm/l/js-diary.svg)](https://github.com/karishmashuklaa/js-diary/blob/master/LICENSE)
 
 ## Install
 ```
