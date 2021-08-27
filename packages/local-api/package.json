@@ -1,6 +1,6 @@
 {
   "name": "@js-diary/local-api",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "files": [
     "dist"
@@ -23,7 +23,7 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@js-diary/local-client": "^2.0.0",
+    "@js-diary/local-client": "^2.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "http-proxy-middleware": "^2.0.1"

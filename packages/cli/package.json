@@ -1,6 +1,6 @@
 {
   "name": "js-diary",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "files": [
     "dist"
@@ -17,10 +17,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@js-diary/local-client": "^2.0.0"
+    "@js-diary/local-client": "^2.0.1"
   },
   "devDependencies": {
-    "@js-diary/local-api": "^2.0.0",
+    "@js-diary/local-api": "^2.0.1",
     "@types/node": "^16.6.2",
     "commander": "^8.1.0",
     "esbuild": "0.8.26",
