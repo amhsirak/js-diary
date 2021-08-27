@@ -1,6 +1,6 @@
 {
   "name": "js-diary",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "In browser interactive coding environment for JavaScript developers. Write JS code, execute it and write documentation using markdown!",
   "files": [
     "dist"
