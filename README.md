@@ -30,7 +30,7 @@ Useful for small code snippets and trying NPM packages
 
 ## How To Use
 * On starting the application you will see two options - Code and Text.
-* The code in each code editor is all joined together in one file. For eg: If you define a variable in one file you can refer it in any of the following cells.
+* The code in each code editor is all joined together in one file. For eg: If you define a variable in one cell you can refer it in any of the following cells.
 * You can show any string, number, etc. and even ***React components*** by calling the `display` function.
    *  ***Note: `display` function is a function built in this environment. Call `display` multiple times to display multiple values.***
 * You can delete cells or re-order them (move up or down) using buttons on the top right corner.
