@@ -1,5 +1,5 @@
 # JS Diary 
-📌 In browser interactive coding environment for JavaScript developers. Write JS code, execute it and yes, write documentation using markdown! 
+📌 In browser interactive coding environment for JavaScript developers. Write JavaScript code and prepare documentation on the fly. 
 
 [![npm Package](https://img.shields.io/npm/v/js-diary.svg)](https://www.npmjs.org/package/js-diary) 
 [![downloads](https://img.shields.io/npm/dt/js-diary.svg)](http://npm-stat.com/charts.html?package=js-diary)
@@ -49,8 +49,6 @@ Currently the file gets saved in JSON format ( Working on saving it in JS Format
 
 ## Issues
 Raise an [Issue](https://github.com/karishmashuklaa/js-diary/issues) if you find any bugs/got ideas. 
+<hr>
 
-
-***Thanks for reading! ⭐ Dont forget to star the [Repository](https://github.com/karishmashuklaa/js-diary) ⭐***
-
-
+Copyright 2021 <a href="https://github.com/karishmashuklaa/">Karishma Shukla</a>
