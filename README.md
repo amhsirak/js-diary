@@ -1,8 +1,8 @@
 # JS Diary 
 📌 In browser interactive coding environment for JavaScript developers. Write JavaScript code and prepare documentation on the fly. 
 
-[![npm Package](https://img.shields.io/npm/v/js-diary.svg)](https://www.npmjs.org/package/js-diary) 
-[![downloads](https://img.shields.io/npm/dt/js-diary.svg)](http://npm-stat.com/charts.html?package=js-diary)
+[![npm Package](https://img.shields.io/npm/v/js-diary.svg?style=for-the-badge&labelColor=black)](https://www.npmjs.org/package/js-diary) 
+[![downloads](https://img.shields.io/npm/dt/js-diary.svg?style=for-the-badge&labelColor=black)](http://npm-stat.com/charts.html?package=js-diary)
 
 ## Install
 ```
