@@ -1,5 +1,8 @@
 # JS Diary 
-📌 In browser interactive coding environment for JavaScript developers. Write JavaScript code and prepare documentation on the fly. 
+
+### In browser live coding environment with markdown & JSX support for JavaScript 🎉
+
+<img width="700" alt="image" src="https://user-images.githubusercontent.com/76456498/166556362-70d60e1f-ecb0-4fa5-adc1-3412994b2495.png">
 
 [![npm Package](https://img.shields.io/npm/v/js-diary.svg?style=for-the-badge&labelColor=black)](https://www.npmjs.org/package/js-diary) 
 [![downloads](https://img.shields.io/npm/dt/js-diary.svg?style=for-the-badge&labelColor=black)](http://npm-stat.com/charts.html?package=js-diary)
@@ -41,7 +44,8 @@ Useful for small code snippets and trying NPM packages
 [![2021-08-27.png](https://i.postimg.cc/PJ3CZmqT/2021-08-27.png)](https://postimg.cc/ZvNYzv3M)
 
 
-***All of your changes get saved to a file you opened [js-diary](https://www.npmjs.com/package/js-diary) with. If you run `npx js-diary serve notebook.js` then all your code and text will be saved to a file named notebook.js***
+**All of your changes get saved to a file you opened [js-diary](https://www.npmjs.com/package/js-diary) with. 
+If you run `npx js-diary serve notebook.js` then all your code and text will be saved to a file named notebook.js**
 
 By default, the name of the file is notes.js
 
